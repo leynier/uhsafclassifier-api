@@ -9,7 +9,8 @@ from fastapi.responses import RedirectResponse
 
 from .api.main import api
 from .api.v1.database import db
-from .api.v1.utils import import_excel
+from .api.v1.models import PersonModel
+from .api.v1.utils import export_excel, import_excel
 
 app = FastAPI(docs_url=None, redoc_url=None)
 
@@ -42,13 +43,15 @@ def import_excel_command(
 
 @typer_app.command(name="export")
 def export_excel_command(
-    filename: Optional[Path] = typer.Argument(
+    path: Optional[Path] = typer.Argument(
         ...,
         exists=True,
-        file_okay=True,
-        dir_okay=False,
+        file_okay=False,
+        dir_okay=True,
         readable=True,
         resolve_path=True,
     ),
 ):
-    pass
+    result = asyncio.get_event_loop().run_until_complete(db.engine.find(PersonModel))
+    export_excel(path=str(path), data=result)
+    typer.echo("Finish!!!")
