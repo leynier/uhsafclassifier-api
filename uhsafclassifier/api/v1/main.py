@@ -3,7 +3,7 @@ from random import randint
 from typing import List, Optional
 
 from fastapi import FastAPI, HTTPException, Request, status
-from fastapi.param_functions import Query
+from fastapi.param_functions import Body
 from fastapi.responses import RedirectResponse
 from odmantic import ObjectId
 
@@ -39,8 +39,8 @@ async def get_tags():
 @api.put("/classify/{id}", tags=["General"], response_model=PersonModel)
 async def put_classify(
     id: ObjectId,
-    tags: List[Options] = Query([]),
-    others: Optional[str] = Query(None),
+    tags: List[Options] = Body([]),
+    others: Optional[str] = Body(None),
 ):
     result = await db.engine.find_one(PersonModel, PersonModel.id == id)
     if result:
