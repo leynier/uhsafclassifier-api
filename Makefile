@@ -14,7 +14,7 @@ export:
 	poetry export -f requirements.txt -o requirements.txt --without-hashes
 
 run: install
-	poetry run uvicorn src.main:app --reload --host ${HOST} --port ${PORT}
+	poetry run uvicorn uhsafclassifier.main:app --reload --host ${HOST} --port ${PORT}
 
 build:
 	docker build -t uhsafclassifier:latest .

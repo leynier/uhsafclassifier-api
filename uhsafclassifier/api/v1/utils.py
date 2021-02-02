@@ -5,25 +5,27 @@ import pandas as pd
 
 from .models import Options, PersonModel
 
-sheets = ['Playa',
-        'Plaza',
-        'Cerro',
-        'Marianao',
-        'Lisa',
-        'Boyeros',
-        'Arroyo',
-        'Centro Habana',
-        '10 de Octubre',
-        'Habana Vieja',
-        'Cotorro',
-        'Guanabacoa',
-        'Habana del Este',
-        'Regla',
-        'San Miguel'
-        ]
+sheets = [
+    "Playa",
+    "Plaza",
+    "Cerro",
+    "Marianao",
+    "Lisa",
+    "Boyeros",
+    "Arroyo",
+    "Centro Habana",
+    "10 de Octubre",
+    "Habana Vieja",
+    "Cotorro",
+    "Guanabacoa",
+    "Habana del Este",
+    "Regla",
+    "San Miguel",
+]
+
 
 def import_excel(path: str):
-    models = []
+    models: List[PersonModel] = []
     for sheet in sheets:
         df: pd.DataFrame = pd.DataFrame(
             pd.read_excel(path, sheet_name=sheet, skiprows=2)
@@ -36,36 +38,40 @@ def import_excel(path: str):
 def export_excel(path: str, data: List[PersonModel]):
     for municipality in sheets:
         final_data = {
-                "Fecha": [],
-                "SAF": [],
-                "Nombre y Apellidos": [],
-                "Carné de Identidad": [],
-                "Dirección": [],
-                "Diariamente": [],
-                "Regularmente": [],
-                "Ocasionalmente": [],
-                "No asiste": [],
-                "Alto": [],
-                "Medio": [],
-                "Bajo": [],
-                "Bueno": [],
-                "Regular": [],
-                "Malo": [],
-                "Opiniones generales sobre el servicio SAF": [],
-                "En caso no asistir, ¿cuáles son las causas?:": [],
-                "Observaciones": [],
-                "Cambio de Dirección": [],
-                "Fallecido": [],
-                "Precio": [],
-                "Mala Calidad": [],
-                "Poca Cantidad": [],
-                "Lejanía": [],
-                "Otros": [],
-            }
-        for person in [x for x in data if x.municipality == municipality]:        
+            "Fecha": [],
+            "SAF": [],
+            "Nombre y Apellidos": [],
+            "Carné de Identidad": [],
+            "Dirección": [],
+            "Diariamente": [],
+            "Regularmente": [],
+            "Ocasionalmente": [],
+            "No asiste": [],
+            "Alto": [],
+            "Medio": [],
+            "Bajo": [],
+            "Bueno": [],
+            "Regular": [],
+            "Malo": [],
+            "Opiniones generales sobre el servicio SAF": [],
+            "En caso no asistir, ¿cuáles son las causas?:": [],
+            "Observaciones": [],
+            "Cambio de Dirección": [],
+            "Fallecido": [],
+            "Precio": [],
+            "Mala Calidad": [],
+            "Poca Cantidad": [],
+            "Lejanía": [],
+            "Otros": [],
+        }
+        for person in [x for x in data if x.municipality == municipality]:
             addPerson(final_data, person)
         df: pd.DataFrame = pd.DataFrame(final_data)
-        df.to_excel(f'{path}/{municipality}.xls' , sheet_name=municipality, startrow=2,)
+        df.to_excel(
+            f"{path}/{municipality}.xls",
+            sheet_name=municipality,
+            startrow=2,
+        )
 
 
 def buildDate(data):
@@ -75,25 +81,31 @@ def buildDate(data):
 
 def fromRow(row: pd.Series, municipality: str):
     persona = PersonModel(
-        date=buildDate(row['Fecha']),
-        municipality = municipality,
-        saf = '' if pd.isna(row['SAF']) else row['SAF'],
-        full_name= '' if pd.isna(row['Nombre y Apellidos'] ) else row['Nombre y Apellidos'],
-        ci= '' if pd.isna(row['Carné de Identidad']) else row['Carné de Identidad'],
-        direction= '' if pd.isna(row['Dirección']) else row['Dirección'],
-        attend_daily = not pd.isna(row['Diariamente']),
-        attend_regular = not pd.isna(row['Regularmente']),
-        attend_ocasional = not pd.isna(row['Ocasionalmente']),
-        dont_attend = not pd.isna(row['No asiste']),
-        service_qual_high = not pd.isna(row['Alto']),
-        service_qual_medium = not pd.isna(row['Medio']),
-        service_qual_low = not pd.isna(row['Bajo']),
-        satisfaction_good = not pd.isna(row['Bueno']),
-        satisfaction_regular = not pd.isna(row['Regular']),
-        satisfaction_bad = not pd.isna(row['Malo']),
-        opinions= '' if pd.isna(row['Opiniones generales sobre el servicio SAF']) else row['Opiniones generales sobre el servicio SAF'],
-        causes= '' if pd.isna(row['En caso no asistir, ¿cuáles son las causas?:']) else row['En caso no asistir, ¿cuáles son las causas?:'],
-        observations= '' if pd.isna(row['Observaciones']) else row['Observaciones'],
+        date=buildDate(row["Fecha"]),
+        municipality=municipality,
+        saf="" if pd.isna(row["SAF"]) else row["SAF"],
+        full_name=""
+        if pd.isna(row["Nombre y Apellidos"])
+        else row["Nombre y Apellidos"],
+        ci="" if pd.isna(row["Carné de Identidad"]) else row["Carné de Identidad"],
+        direction="" if pd.isna(row["Dirección"]) else row["Dirección"],
+        attend_daily=not pd.isna(row["Diariamente"]),
+        attend_regular=not pd.isna(row["Regularmente"]),
+        attend_ocasional=not pd.isna(row["Ocasionalmente"]),
+        dont_attend=not pd.isna(row["No asiste"]),
+        service_qual_high=not pd.isna(row["Alto"]),
+        service_qual_medium=not pd.isna(row["Medio"]),
+        service_qual_low=not pd.isna(row["Bajo"]),
+        satisfaction_good=not pd.isna(row["Bueno"]),
+        satisfaction_regular=not pd.isna(row["Regular"]),
+        satisfaction_bad=not pd.isna(row["Malo"]),
+        opinions=""
+        if pd.isna(row["Opiniones generales sobre el servicio SAF"])
+        else row["Opiniones generales sobre el servicio SAF"],
+        causes=""
+        if pd.isna(row["En caso no asistir, ¿cuáles son las causas?:"])
+        else row["En caso no asistir, ¿cuáles son las causas?:"],
+        observations="" if pd.isna(row["Observaciones"]) else row["Observaciones"],
     )
     return persona
 
