@@ -70,11 +70,32 @@ async def get_person(id: ObjectId):
     )
 
 
+@api.post("/persons", tags=["General"], response_model=PersonModel)
+async def post_person(model: PersonModel):
+    await db.engine.save(model)
+    return model
+
+
 @api.put("/persons/{id}", tags=["General"], response_model=PersonModel)
 async def put_person(id: ObjectId, model: PersonModel):
     result = await db.engine.find_one(PersonModel, PersonModel.id == id)
     if result:
-        pass
+        update_data = model.dict(exclude_unset=True)
+        updated_item = result.copy(update=update_data)
+        await db.engine.save(updated_item)
+        return updated_item
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail=f"Person with id {id} was not found",
+    )
+
+
+@api.delete("/persons", tags=["General"], response_model=PersonModel)
+async def delete_person(id: ObjectId):
+    result = await db.engine.find_one(PersonModel, PersonModel.id == id)
+    if result:
+        await db.engine.delete(result)
+        return result
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
         detail=f"Person with id {id} was not found",
