@@ -1,8 +1,8 @@
-from typing import *
 from datetime import datetime
 from enum import Enum
+from typing import List, Optional
 
-from pydantic import BaseModel
+from odmantic import Model
 
 
 class Options(str, Enum):
@@ -13,14 +13,14 @@ class Options(str, Enum):
     causes_low_quality = "causes_low_quality"
     causes_price = "causes_price"
 
-class PersonModel(BaseModel):
-    id: int
-    date: datetime = None
-    municipality: str = ""
-    saf: str = ""
-    full_name: str = ""
-    ci: str = ""
-    direction: str = ""
+
+class PersonModel(Model):
+    date: Optional[datetime] = None
+    municipality: Optional[str] = None
+    saf: Optional[str] = None
+    full_name: str
+    ci: Optional[str] = None
+    direction: Optional[str] = None
     attend_daily: bool = False
     attend_regular: bool = False
     attend_ocasional: bool = False
@@ -31,8 +31,8 @@ class PersonModel(BaseModel):
     satisfaction_good: bool = False
     satisfaction_regular: bool = False
     satisfaction_bad: bool = False
-    opinions: str = ""
-    causes: str = ""
-    observations: str = ""
+    opinions: Optional[str] = None
+    causes: Optional[str] = None
+    observations: Optional[str] = None
     causes_tags: List[Options] = []
-    causes_others: str = ""
+    causes_others: Optional[str] = None
