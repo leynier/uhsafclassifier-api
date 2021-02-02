@@ -53,26 +53,27 @@ def buildDate(data):
     return datetime(year=int(parts[2]), month=int(parts[1]), day=int(parts[0]))
 
 def fromRow(row: pd.Series, municipality: str):
-    persona = PersonModel()
-    persona.date: datetime = buildDate(row['Fecha'])
-    persona.municipality: str = municipality
-    persona.saf: str = '' if pd.isna(row['SAF']) else row['SAF']
-    persona.full_name: str = '' if pd.isna(row['Nombre y Apellidos'] ) else row['Nombre y Apellidos']
-    persona.ci: str = '' if pd.isna(row['Carné de Identidad']) else row['Carné de Identidad']
-    persona.direction: str = '' if pd.isna(row['Dirección']) else row['Dirección']
-    persona.attend_daily: bool = not pd.isna(row['Diariamente'])
-    persona.attend_regular: bool = not pd.isna(row['Regularmente'])
-    persona.attend_ocasional: bool = not pd.isna(row['Ocasionalmente'])
-    persona.dont_attend: bool = not pd.isna(row['No asiste'])
-    persona.service_qual_high: bool = not pd.isna(row['Alto'])
-    persona.service_qual_medium: bool = not pd.isna(row['Medio'])
-    persona.service_qual_low: bool = not pd.isna(row['Bajo'])
-    persona.satisfaction_good: bool = not pd.isna(row['Bueno'])
-    persona.satisfaction_regular: bool = not pd.isna(row['Regular'])
-    persona.satisfaction_bad: bool = not pd.isna(row['Malo'])
-    persona.opinions: str = '' if pd.isna(row['Opiniones generales sobre el servicio SAF']) else row['Opiniones generales sobre el servicio SAF']
-    persona.causes: str = '' if pd.isna(row['En caso no asistir, ¿cuáles son las causas?:']) else row['En caso no asistir, ¿cuáles son las causas?:']
-    persona.observations: str = '' if pd.isna(row['Observaciones']) else row['Observaciones']
+    persona = PersonModel(
+        date=buildDate(row['Fecha']),
+        municipality = municipality,
+        saf = '' if pd.isna(row['SAF']) else row['SAF'],
+        full_name= '' if pd.isna(row['Nombre y Apellidos'] ) else row['Nombre y Apellidos'],
+        ci= '' if pd.isna(row['Carné de Identidad']) else row['Carné de Identidad'],
+        direction= '' if pd.isna(row['Dirección']) else row['Dirección'],
+        attend_daily = not pd.isna(row['Diariamente']),
+        attend_regular = not pd.isna(row['Regularmente']),
+        attend_ocasional = not pd.isna(row['Ocasionalmente']),
+        dont_attend = not pd.isna(row['No asiste']),
+        service_qual_high = not pd.isna(row['Alto']),
+        service_qual_medium = not pd.isna(row['Medio']),
+        service_qual_low = not pd.isna(row['Bajo']),
+        satisfaction_good = not pd.isna(row['Bueno']),
+        satisfaction_regular = not pd.isna(row['Regular']),
+        satisfaction_bad = not pd.isna(row['Malo']),
+        opinions= '' if pd.isna(row['Opiniones generales sobre el servicio SAF']) else row['Opiniones generales sobre el servicio SAF'],
+        causes= '' if pd.isna(row['En caso no asistir, ¿cuáles son las causas?:']) else row['En caso no asistir, ¿cuáles son las causas?:'],
+        observations= '' if pd.isna(row['Observaciones']) else row['Observaciones'],
+    )
     return persona
 
 def addPerson(final_data: dict, person: PersonModel):
