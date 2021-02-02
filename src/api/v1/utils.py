@@ -3,10 +3,26 @@ from typing import List
 
 import pandas as pd
 
-from .models import Options, PersonModel
+from model import Options, PersonModel
 
+sheets = ['Playa',
+        'Plaza',
+        'Cerro',
+        'Marianao',
+        'Lisa',
+        'Boyeros',
+        'Arroyo',
+        'Centro Habana',
+        '10 de Octubre',
+        'Habana Vieja',
+        'Cotorro',
+        'Guanabacoa',
+        'Habana del Este',
+        'Regla',
+        'San Miguel'
+        ]
 
-def import_excel(path: str, sheets: List[str]):
+def import_excel(path: str):
     models = []
     for sheet in sheets:
         df: pd.DataFrame = pd.DataFrame(
@@ -17,39 +33,39 @@ def import_excel(path: str, sheets: List[str]):
     return models
 
 
-def export_excel(path: str, sheets: List[str], data: List[List[PersonModel]]):
-    for municipality, mun_data in zip(sheets, data):
+def export_excel(path: str, data: List[PersonModel]):
+    for municipality in sheets:
         final_data = {
-            "Fecha": [],
-            "SAF": [],
-            "Nombre y Apellidos": [],
-            "Carné de Identidad": [],
-            "Dirección": [],
-            "Diariamente": [],
-            "Regularmente": [],
-            "Ocasionalmente": [],
-            "No asiste": [],
-            "Alto": [],
-            "Medio": [],
-            "Bajo": [],
-            "Bueno": [],
-            "Regular": [],
-            "Malo": [],
-            "Opiniones generales sobre el servicio SAF": [],
-            "En caso no asistir, ¿cuáles son las causas?:": [],
-            "Observaciones": [],
-            "Cambio de Dirección": [],
-            "Fallecido": [],
-            "Precio": [],
-            "Mala Calidad": [],
-            "Poca Cantidad": [],
-            "Lejanía": [],
-            "Otros": [],
-        }
-        for person in mun_data:
+                "Fecha": [],
+                "SAF": [],
+                "Nombre y Apellidos": [],
+                "Carné de Identidad": [],
+                "Dirección": [],
+                "Diariamente": [],
+                "Regularmente": [],
+                "Ocasionalmente": [],
+                "No asiste": [],
+                "Alto": [],
+                "Medio": [],
+                "Bajo": [],
+                "Bueno": [],
+                "Regular": [],
+                "Malo": [],
+                "Opiniones generales sobre el servicio SAF": [],
+                "En caso no asistir, ¿cuáles son las causas?:": [],
+                "Observaciones": [],
+                "Cambio de Dirección": [],
+                "Fallecido": [],
+                "Precio": [],
+                "Mala Calidad": [],
+                "Poca Cantidad": [],
+                "Lejanía": [],
+                "Otros": [],
+            }
+        for person in [x for x in data if x.municipality == municipality]:        
             addPerson(final_data, person)
         df: pd.DataFrame = pd.DataFrame(final_data)
-        df.to_excel(path, sheet_name=municipality, startrow=2)
+        df.to_excel(f'{path}/{municipality}.xls' , sheet_name=municipality, startrow=2,)
 
 
 def buildDate(data):
