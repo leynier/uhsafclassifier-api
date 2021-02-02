@@ -58,36 +58,27 @@ def buildDate(data):
 
 
 def fromRow(row: pd.Series, municipality: str):
-    persona = PersonModel()
-    persona.date = buildDate(row["Fecha"])
-    persona.municipality = municipality
-    persona.saf = "" if pd.isna(row["SAF"]) else row["SAF"]
-    persona.full_name = (
-        "" if pd.isna(row["Nombre y Apellidos"]) else row["Nombre y Apellidos"]
+    persona = PersonModel(
+        date=buildDate(row['Fecha']),
+        municipality = municipality,
+        saf = '' if pd.isna(row['SAF']) else row['SAF'],
+        full_name= '' if pd.isna(row['Nombre y Apellidos'] ) else row['Nombre y Apellidos'],
+        ci= '' if pd.isna(row['Carné de Identidad']) else row['Carné de Identidad'],
+        direction= '' if pd.isna(row['Dirección']) else row['Dirección'],
+        attend_daily = not pd.isna(row['Diariamente']),
+        attend_regular = not pd.isna(row['Regularmente']),
+        attend_ocasional = not pd.isna(row['Ocasionalmente']),
+        dont_attend = not pd.isna(row['No asiste']),
+        service_qual_high = not pd.isna(row['Alto']),
+        service_qual_medium = not pd.isna(row['Medio']),
+        service_qual_low = not pd.isna(row['Bajo']),
+        satisfaction_good = not pd.isna(row['Bueno']),
+        satisfaction_regular = not pd.isna(row['Regular']),
+        satisfaction_bad = not pd.isna(row['Malo']),
+        opinions= '' if pd.isna(row['Opiniones generales sobre el servicio SAF']) else row['Opiniones generales sobre el servicio SAF'],
+        causes= '' if pd.isna(row['En caso no asistir, ¿cuáles son las causas?:']) else row['En caso no asistir, ¿cuáles son las causas?:'],
+        observations= '' if pd.isna(row['Observaciones']) else row['Observaciones'],
     )
-    persona.ci = "" if pd.isna(row["Carné de Identidad"]) else row["Carné de Identidad"]
-    persona.direction = "" if pd.isna(row["Dirección"]) else row["Dirección"]
-    persona.attend_daily = not pd.isna(row["Diariamente"])
-    persona.attend_regular = not pd.isna(row["Regularmente"])
-    persona.attend_ocasional = not pd.isna(row["Ocasionalmente"])
-    persona.dont_attend = not pd.isna(row["No asiste"])
-    persona.service_qual_high = not pd.isna(row["Alto"])
-    persona.service_qual_medium = not pd.isna(row["Medio"])
-    persona.service_qual_low = not pd.isna(row["Bajo"])
-    persona.satisfaction_good = not pd.isna(row["Bueno"])
-    persona.satisfaction_regular = not pd.isna(row["Regular"])
-    persona.satisfaction_bad = not pd.isna(row["Malo"])
-    persona.opinions = (
-        ""
-        if pd.isna(row["Opiniones generales sobre el servicio SAF"])
-        else row["Opiniones generales sobre el servicio SAF"]
-    )
-    persona.causes = (
-        ""
-        if pd.isna(row["En caso no asistir, ¿cuáles son las causas?:"])
-        else row["En caso no asistir, ¿cuáles son las causas?:"]
-    )
-    persona.observations = "" if pd.isna(row["Observaciones"]) else row["Observaciones"]
     return persona
 
 
