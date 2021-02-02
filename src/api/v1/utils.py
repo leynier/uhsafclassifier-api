@@ -3,7 +3,7 @@ from typing import List
 
 import pandas as pd
 
-from model import Options, PersonModel
+from .models import Options, PersonModel
 
 sheets = ['Playa',
         'Plaza',
