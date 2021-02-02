@@ -1,21 +1,17 @@
 [tool.poetry]
-name = "template"
-version = "0.3.1"
-description = "Python template with CI/CD ready for production"
+name = "uhsafclassifier"
+version = "1.0.0"
+description = ""
 authors = ["leynier <leynier41@gmail.com>"]
-homepage = "https://github.com/leynier/python-template"
-repository = "https://github.com/leynier/python-template"
-documentation = "https://github.com/leynier/python-template"
+homepage = "https://github.com/leynier/uhsafclassifier-api"
+repository = "https://github.com/leynier/uhsafclassifier-api"
+documentation = "https://github.com/leynier/uhsafclassifier-api"
 readme = "README.md"
-license = "MIT"
-
-[tool.poetry.scripts]
-template = "template.main:app"
 
 [tool.poetry.dependencies]
-python = "^3.8"
-typer = "^0.3.2"
+python = "^3.7.1"
 fastapi = {extras = ["all"], version = "^0.63.0"}
+pandas = "^1.2.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
