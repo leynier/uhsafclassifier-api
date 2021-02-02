@@ -1,4 +1,5 @@
 from os.path import join
+from random import randint
 from typing import List, Optional
 
 from fastapi import FastAPI, HTTPException, Request, status
@@ -19,9 +20,11 @@ def index(request: Request):
 
 @api.get("/empty", tags=["General"], response_model=PersonModel)
 async def get_empty():
-    result = await db.engine.find_one(PersonModel, PersonModel.causes_tags == [])
+    result = await db.engine.find(PersonModel, PersonModel.causes_tags == [])
     if result:
-        return result
+        length = len(result)
+        index = randint(0, length)
+        return result[index]
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
         detail="Empty model was not found",
