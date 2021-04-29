@@ -14,7 +14,7 @@ uhsafclassifier = "uhsafclassifier.main:typer_app"
 [tool.poetry.dependencies]
 python = "^3.7.1"
 fastapi = {extras = ["all"], version = "^0.63.0"}
-pandas = "^1.2.1"
+pandas = "^1.2.4"
 odmantic = "^0.3.2"
 typer = "^0.3.2"
 xlrd = "^2.0.1"
