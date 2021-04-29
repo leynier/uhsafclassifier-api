@@ -378,7 +378,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "odmantic"
-version = "0.3.2"
+version = "0.3.4"
 description = "ODMantic, an AsyncIO MongoDB Object Document Mapper for Python using type hints "
 category = "main"
 optional = false
@@ -387,11 +387,11 @@ python-versions = ">=3.6,<4.0"
 [package.dependencies]
 importlib-metadata = {version = ">=1,<4", markers = "python_version < \"3.8\""}
 motor = ">=2.1.0,<2.4.0"
-pydantic = ">=1.6.0,<1.8.0"
+pydantic = ">=1.6.0,<1.9.0"
 typing-extensions = {version = ">=3.7.4.3,<4.0.0.0", markers = "python_version < \"3.8\""}
 
 [package.extras]
-fastapi = ["fastapi (>=0.61.1,<0.63.0)"]
+fastapi = ["fastapi (>=0.61.1,<0.64.0)"]
 
 [[package]]
 name = "orjson"
@@ -811,7 +811,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.1"
-content-hash = "2ea9e518ae2c29946a87fca3511757e13e3ea4cc7973be8e1cf1373c4a16a4af"
+content-hash = "3d8a8f4886cbefc77e35022ba2ad1b2c09a9318fd24165b3ba3589daf2982365"
 
 [metadata.files]
 aiofiles = [
@@ -1076,8 +1076,8 @@ numpy = [
     {file = "numpy-1.20.0.zip", hash = "sha256:3d8233c03f116d068d5365fed4477f2947c7229582dad81e5953088989294cec"},
 ]
 odmantic = [
-    {file = "ODMantic-0.3.2-py3-none-any.whl", hash = "sha256:a2f7389f4a4981ccd14b0161dc41bf51216102359d750a1b2612bb4475c13bad"},
-    {file = "ODMantic-0.3.2.tar.gz", hash = "sha256:6a6e3652ca0136b3db5d81d68e5b691c8cab1985e0a897425209028287597fef"},
+    {file = "ODMantic-0.3.4-py3-none-any.whl", hash = "sha256:1221322cc3725b71806f0a5d708aa78da1ad631b71368d7a2318105a13a38e76"},
+    {file = "ODMantic-0.3.4.tar.gz", hash = "sha256:314724ba384c91ac13a5bfdf4a5da5c0ce5425760f6a06d63441b701337bb95d"},
 ]
 orjson = [
     {file = "orjson-3.4.7-cp310-cp310-manylinux2014_aarch64.whl", hash = "sha256:f9cd599d3847f245fd334289fbcc8d9e4c8c600fa0dbc4eacb31fb00cb0d40b6"},
