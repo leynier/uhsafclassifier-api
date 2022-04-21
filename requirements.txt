@@ -22,7 +22,7 @@ markupsafe==1.1.1; python_version >= "3.6" and python_full_version < "3.0.0" or 
 motor==2.3.0; python_version >= "3.6" and python_version < "4.0" and python_full_version >= "3.5.2"
 numpy==1.20.0; python_version >= "3.7" and python_full_version >= "3.7.1"
 odmantic==0.3.2; python_version >= "3.6" and python_version < "4.0"
-orjson==3.4.7; python_version >= "3.6"
+orjson==3.6.8; python_version >= "3.6"
 pandas==1.2.1; python_full_version >= "3.7.1"
 promise==2.3; python_version >= "3.6"
 pydantic==1.7.3; python_version >= "3.6" and python_version < "4.0"
