@@ -35,7 +35,7 @@ pyyaml==5.4.1
 requests==2.25.1; python_version >= "3.6" and python_full_version < "3.0.0" or python_version >= "3.6" and python_full_version >= "3.5.0"
 rx==3.2.0; python_version >= "3.6"
 six==1.15.0; python_version >= "3.6" and python_full_version >= "3.7.1" and (python_version >= "3.6" and python_full_version < "3.0.0" or python_version >= "3.6" and python_full_version >= "3.3.0")
-starlette==0.13.6; python_version >= "3.6"
+starlette==0.19.1; python_version >= "3.6"
 typer==0.3.2; python_version >= "3.6"
 typing-extensions==3.7.4.3; python_version >= "3.6" and python_version < "3.8"
 ujson==3.2.0; python_version >= "3.6"
