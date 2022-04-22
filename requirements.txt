@@ -27,7 +27,7 @@ pandas==1.2.1; python_full_version >= "3.7.1"
 promise==2.3; python_version >= "3.6"
 pydantic==1.7.3; python_version >= "3.6" and python_version < "4.0"
 pymongo==3.11.2; python_version >= "3.6" and python_version < "4.0" and python_full_version >= "3.5.2"
-python-dateutil==2.8.1; python_full_version >= "3.7.1"
+python-dateutil==2.8.2; python_full_version >= "3.7.1"
 python-dotenv==0.20.0
 python-multipart==0.0.5; python_version >= "3.6"
 pytz==2022.1; python_full_version >= "3.7.1"
