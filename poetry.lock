@@ -325,20 +325,20 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "odmantic"
-version = "0.3.5"
+version = "0.4.0"
 description = "ODMantic, an AsyncIO MongoDB Object Document Mapper for Python using type hints "
 category = "main"
 optional = false
 python-versions = ">=3.6,<4.0"
 
 [package.dependencies]
-importlib-metadata = {version = ">=1,<4", markers = "python_version < \"3.8\""}
-motor = ">=2.1.0,<2.4.0"
+importlib-metadata = {version = ">=1,<5", markers = "python_version < \"3.8\""}
+motor = ">=2.1.0,<2.6.0"
 pydantic = ">=1.6.2,<1.7 || >1.7,<1.7.1 || >1.7.1,<1.7.2 || >1.7.2,<1.7.3 || >1.7.3,<1.8 || >1.8,<1.8.1 || >1.8.1,<1.9.0"
 typing-extensions = {version = ">=3.7.4.3,<4.0.0.0", markers = "python_version < \"3.8\""}
 
 [package.extras]
-fastapi = ["fastapi (>=0.61.1,<0.64.0)"]
+fastapi = ["fastapi (>=0.61.1,<0.69.0)"]
 
 [[package]]
 name = "orjson"
@@ -760,7 +760,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.1"
-content-hash = "9738fdf25ff32811abdcd7ccab4e856afe7042ae3f00d30ca795604ff014288f"
+content-hash = "afaafe8ead449db94787f6f28cde5402ddb6183387a580ef207275c9bbc996d0"
 
 [metadata.files]
 anyio = [
@@ -1040,8 +1040,8 @@ numpy = [
     {file = "numpy-1.21.1.zip", hash = "sha256:dff4af63638afcc57a3dfb9e4b26d434a7a602d225b42d746ea7fe2edf1342fd"},
 ]
 odmantic = [
-    {file = "ODMantic-0.3.5-py3-none-any.whl", hash = "sha256:ba62c0c51c224d0d2cfe3684cc7ace4c1fde55bf7631630e1dbe2bd08c6e0b6c"},
-    {file = "ODMantic-0.3.5.tar.gz", hash = "sha256:fe820dc414ecefdc4288f1d57005f6630ee1e720c114d291a1de1dba4e816c57"},
+    {file = "ODMantic-0.4.0-py3-none-any.whl", hash = "sha256:a4676db93e1b9214b5808bdd36a42cf6625c6761451c95a915418f2f6c0549c8"},
+    {file = "ODMantic-0.4.0.tar.gz", hash = "sha256:6f0a30d55f11263e20e6d0ee5aafb51560621fae81f299dd3d260a28471cda30"},
 ]
 orjson = [
     {file = "orjson-3.4.7-cp310-cp310-manylinux2014_aarch64.whl", hash = "sha256:f9cd599d3847f245fd334289fbcc8d9e4c8c600fa0dbc4eacb31fb00cb0d40b6"},
