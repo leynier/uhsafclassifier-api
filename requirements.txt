@@ -38,7 +38,7 @@ six==1.15.0; python_version >= "3.6" and python_full_version >= "3.7.1" and (pyt
 starlette==0.19.1; python_version >= "3.6"
 typer==0.3.2; python_version >= "3.6"
 typing-extensions==3.7.4.3; python_version >= "3.6" and python_version < "3.8"
-ujson==5.2.0; python_version >= "3.6"
+ujson==5.4.0; python_version >= "3.6"
 urllib3==1.26.3; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version < "4" and python_version >= "3.6"
 uvicorn==0.17.6; python_version >= "3.6"
 uvloop==0.16.0
